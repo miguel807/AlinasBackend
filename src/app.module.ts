@@ -11,12 +11,12 @@ import { ProductModule } from './product/infrastructure/product.module';
   imports: [
     EventEmitterModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      //host: 'localhost',
-      // port: 33060,
-      //  username: 'root',
-      // password: 'root',
-      database: 'alinas.sqlite',
+      type: 'postgres',
+      host: 'dpg-cmm821ocmk4c73e0i8vg-a',
+      port: 5432,
+      username: 'alinasdb_user',
+      password: 'nf338xPUFqcvJBgeeMNawLsoV85ZovYw',
+      database: 'alinasdb',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true,
     }),
