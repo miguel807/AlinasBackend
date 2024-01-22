@@ -52,20 +52,20 @@ export class ProductController {
   }
 
   @Get(':name')
-  findOne(@Param('name') name: string) {
+  findOne(@Param('name') name: number) {
     return this.productService.findOne(name);
   }
 
   @Patch(':name')
   update(
-    @Param('name') name: string,
+    @Param('name') name: number,
     @Body() updateProductDto: UpdateProductDto,
   ) {
     return this.productService.update(name, updateProductDto);
   }
 
   @Delete(':name')
-  remove(@Param('name') name: string) {
+  remove(@Param('name') name: number) {
     return this.productService.remove(name);
   }
 }

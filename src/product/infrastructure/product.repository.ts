@@ -23,8 +23,8 @@ export class ProductMySqlRepository implements ProductRepositoryInterface {
     const productCreated = await this.productRepository.save(newProduct);
     return productCreated;
   }
-  async getProductById(name: string): Promise<ProductInterface> {
-    const product = await this.productRepository.findOneBy({ name: name });
+  async getProductById(id: number): Promise<ProductInterface> {
+    const product = await this.productRepository.findOneBy({ id: id });
     if (!product) throw new NotFoundException('Product not found');
     return product;
   }
@@ -37,17 +37,17 @@ export class ProductMySqlRepository implements ProductRepositoryInterface {
 
   async update(
     product: ProductInterface,
-    name: string,
+    id: number,
   ): Promise<ProductInterface> {
-    const productUpdate = await this.getProductById(name);
+    const productUpdate = await this.getProductById(id);
     if (!productUpdate) throw new NotFoundException('Product not found');
     const productUpdated = Object.assign(productUpdate, product);
     await this.productRepository.save(productUpdated);
     return productUpdated;
   }
 
-  async delete(name: string): Promise<ProductInterface> {
-    const product = await this.getProductById(name);
+  async delete(id: number): Promise<ProductInterface> {
+    const product = await this.getProductById(id);
     if (!product) throw new NotFoundException('Product not found');
     await this.productRepository.delete(product);
     return product;

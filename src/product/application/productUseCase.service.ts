@@ -16,15 +16,15 @@ export class ProductService {
     return this.productRepository.getAllProduct();
   }
 
-  findOne(name: string) {
-    return this.productRepository.getProductById(name);
+  findOne(id: number) {
+    return this.productRepository.getProductById(id);
   }
 
-  update(name: string, updateProduct: ProductInterface) {
-    return this.productRepository.update(updateProduct, name);
+  update(id: number, updateProduct: ProductInterface) {
+    return this.productRepository.update(updateProduct, id);
   }
 
-  remove(name: string) {
-    return this.productRepository.delete(name);
+  remove(id: number) {
+    return this.productRepository.delete(id);
   }
 }
